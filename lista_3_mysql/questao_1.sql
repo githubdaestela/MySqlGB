@@ -37,6 +37,13 @@ select * from tb_produto where preco between 3.00 and 5.00;
 
 select * from tb_produto where nome like "%CO%";
 
+use db_cidade_das_carnes;
 select tb_produtos.id, tb_produtos.nome, tb_produtos.preco, tb_produtos.estoque, tb_produtos.id_categoria, tb_categoria.disponivel as disponivel, tb_categoria.id as id_categoria
 from tb_produtos
-inner join tb_categoria tb_categoria on tb_produtos.categoria_id;
+inner join tb_categoria on tb_categoria.id = tb_produtos.id_categoria;
+
+use db_cidade_das_carnes;
+select nome, preco, estoque, id_categoria, tb_categoria.disponivel as disponivel
+from tb_produtos
+inner join  tb_categoria on tb_categoria.id = tb_produtos.id_categoria
+where tb_categoria.disponivel like "%Aves%";
